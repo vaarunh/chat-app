@@ -34,6 +34,9 @@ const SignIn = () => {
     const onGoogleSignIn = () => {
         signInWithProvider( new firebase.auth.GoogleAuthProvider() )
     };
+    const onGitSignIn = () => {
+        signInWithProvider( new firebase.auth.GithubAuthProvider() )
+    };
 
 return <Container>
     <Grid className="mt-page">
@@ -50,8 +53,12 @@ return <Container>
                             <Icon icon="facebook-official"/> Continue with Facebook
                         </Button>
 
-                        <Button block color="green" on onClick={onGoogleSignIn}>
+                        <Button block color="green" onClick={onGoogleSignIn}>
                             <Icon icon="google"/> Continue with Google
+                        </Button>
+
+                        <Button block color="violet" onClick={onGitSignIn}>
+                            <Icon icon="github"/> Continue with GitHub
                         </Button>
                     </div>
                     

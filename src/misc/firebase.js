@@ -1,6 +1,10 @@
+
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
+import 'firebase/messaging';
+import 'firebase/functions';
 
 const config = {
     apiKey: "AIzaSyCXy9gYzsI2RynmebtmEVoe-mfke32aU1w",
@@ -12,7 +16,10 @@ const config = {
     appId: "1:102079512712:web:e31060f8c5450e8b435f3d"
   };
 
-  // eslint-disable-next-line no-undef
- const app = firebase.initializeApp(config);
- export const auth = app.auth();
- export const database = app.database();
+  const app = firebase.initializeApp(config);
+  export const auth = app.auth();
+  export const database = app.database();
+  export const storage = app.storage();
+  export const functions = app.functions('europe-west3');
+  
+
