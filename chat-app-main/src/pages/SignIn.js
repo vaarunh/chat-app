@@ -29,6 +29,10 @@ const SignIn = () => {
     signInWithProvider(new firebase.auth.GoogleAuthProvider());
   };
 
+  const onGitHubSignIn = () => {
+    signInWithProvider(new firebase.auth.GithubAuthProvider());
+  };
+
   return (
     <Container>
       <Grid className="mt-page">
@@ -36,8 +40,8 @@ const SignIn = () => {
           <Col xs={24} md={12} mdOffset={6}>
             <Panel>
               <div className="text-center">
-                <h2>Welcome to Chat</h2>
-                <p>Progressive chat platform for neophytes</p>
+                <h2>Welcome to V-Chat App</h2>
+                <p>Progressive Chatroom Meets</p>
               </div>
 
               <div className="mt-3">
@@ -47,6 +51,10 @@ const SignIn = () => {
 
                 <Button block color="green" onClick={onGoogleSignIn}>
                   <Icon icon="google" /> Continue with Google
+                </Button>
+
+                <Button block color="violet" onClick={onGitHubSignIn}>
+                  <Icon icon="github" /> Continue with GitHub
                 </Button>
               </div>
             </Panel>

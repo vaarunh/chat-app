@@ -71,13 +71,13 @@ const CreateRoomBtnModal = () => {
 
   return (
     <div className="mt-1">
-      <Button block color="green" onClick={open}>
-        <Icon icon="creative" /> Create new chat room
+      <Button block color="cyan" onClick={open}>
+        <Icon icon="database" /> Create Chat Room
       </Button>
 
       <Modal show={isOpen} onHide={close}>
         <Modal.Header>
-          <Modal.Title>New chat room</Modal.Title>
+          <Modal.Title>New Chat Room</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form
@@ -88,7 +88,7 @@ const CreateRoomBtnModal = () => {
             ref={formRef}
           >
             <FormGroup>
-              <ControlLabel>Room name</ControlLabel>
+              <ControlLabel>Room Name</ControlLabel>
               <FormControl name="name" placeholder="Enter chat room name..." />
             </FormGroup>
 
@@ -110,7 +110,7 @@ const CreateRoomBtnModal = () => {
             onClick={onSubmit}
             disabled={isLoading}
           >
-            Create new chat room
+            Create New Chat Room
           </Button>
         </Modal.Footer>
       </Modal>

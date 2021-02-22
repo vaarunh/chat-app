@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, Button, Divider, Alert } from 'rsuite';
+import { Drawer, Button, Divider, Alert, Icon } from 'rsuite';
 import { useProfile } from '../../context/profile.context';
 import EditableInput from '../EditableInput';
 import { database } from '../../misc/firebase';
@@ -48,10 +48,11 @@ const Dashboard = ({ onSignOut }) => {
 
       <Drawer.Footer>
         <Button block color="red" onClick={onSignOut}>
-          Sign out
+        <Icon icon="sign-out" /> Sign out
         </Button>
+        <p> <Icon icon="laptop" /> Developed By <a href="https://varunherlekar.com">Varun Herlekar</a></p>
       </Drawer.Footer>
-    </>
+      </>
   );
 };
 

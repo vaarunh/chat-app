@@ -11,6 +11,9 @@ const ProviderBlock = () => {
     'facebook.com': auth.currentUser.providerData.some(
       data => data.providerId === 'facebook.com'
     ),
+    'github.com': auth.currentUser.providerData.some(
+      data => data.providerId === 'github.com'
+    ),
   });
 
   const updateIsConnected = (providerId, value) => {
@@ -42,6 +45,10 @@ const ProviderBlock = () => {
   const unlinkGoogle = () => {
     unlink('google.com');
   };
+  const unlinkGitHub = () => {
+    unlink('github.com');
+  };
+  
 
   const link = async provider => {
     try {
@@ -59,6 +66,9 @@ const ProviderBlock = () => {
   const linkGoogle = () => {
     link(new firebase.auth.GoogleAuthProvider());
   };
+  const linkGitHub = () => {
+    link(new firebase.auth.GithubAuthProvider());
+  };
 
   return (
     <div>
@@ -72,6 +82,11 @@ const ProviderBlock = () => {
           <Icon icon="facebook" /> Connected
         </Tag>
       )}
+      {isConnected['github.com'] && (
+        <Tag color="violet" closable onClose={unlinkGitHub}>
+          <Icon icon="github" /> Connected
+        </Tag>
+      )}
 
       <div className="mt-2">
         {!isConnected['google.com'] && (
@@ -83,6 +98,12 @@ const ProviderBlock = () => {
         {!isConnected['facebook.com'] && (
           <Button block color="blue" onClick={linkFacebook}>
             <Icon icon="facebook" /> Link to Facebook
+          </Button>
+        )}
+
+{!isConnected['github.com'] && (
+          <Button block color="violet" onClick={linkGitHub}>
+            <Icon icon="github" /> Link to GitHub
           </Button>
         )}
       </div>
