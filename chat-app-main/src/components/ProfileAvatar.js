@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable arrow-body-style */
 import React from 'react';
 import { Avatar } from 'rsuite';
 import { getNameInitials } from '../misc/helpers';

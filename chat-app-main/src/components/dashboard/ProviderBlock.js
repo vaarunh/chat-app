@@ -1,4 +1,3 @@
-/* eslint-disable arrow-body-style */
 import React, { useState } from 'react';
 import { Tag, Icon, Button, Alert } from 'rsuite';
 import firebase from 'firebase/app';
@@ -12,9 +11,6 @@ const ProviderBlock = () => {
     'facebook.com': auth.currentUser.providerData.some(
       data => data.providerId === 'facebook.com'
     ),
-    'github.com': auth.currentUser.providerData.some(
-        data => data.providerId === 'github.com'
-      ),
   });
 
   const updateIsConnected = (providerId, value) => {
@@ -46,9 +42,6 @@ const ProviderBlock = () => {
   const unlinkGoogle = () => {
     unlink('google.com');
   };
-  const unlinkGitHub = () => {
-    unlink('github.com');
-  };
 
   const link = async provider => {
     try {
@@ -56,7 +49,7 @@ const ProviderBlock = () => {
       Alert.info(`Linked to ${provider.providerId}`, 4000);
       updateIsConnected(provider.providerId, true);
     } catch (err) {
-      Alert.error(err.message, 4000);
+      Alert.error(err.message, 400);
     }
   };
 
@@ -65,9 +58,6 @@ const ProviderBlock = () => {
   };
   const linkGoogle = () => {
     link(new firebase.auth.GoogleAuthProvider());
-  };
-  const linkGitHub = () => {
-    link(new firebase.auth.GithubAuthProvider());
   };
 
   return (
@@ -80,11 +70,6 @@ const ProviderBlock = () => {
       {isConnected['facebook.com'] && (
         <Tag color="blue" closable onClose={unlinkFacebook}>
           <Icon icon="facebook" /> Connected
-        </Tag>
-      )}
-      {isConnected['github.com'] && (
-        <Tag color="violet" closable onClose={unlinkGitHub}>
-          <Icon icon="github" /> Connected
         </Tag>
       )}
 
@@ -100,13 +85,6 @@ const ProviderBlock = () => {
             <Icon icon="facebook" /> Link to Facebook
           </Button>
         )}
-
-        {!isConnected['github.com'] && (
-          <Button block color="violet" onClick={linkGitHub}>
-            <Icon icon="github" /> Link to GitHub
-          </Button>
-        )}
-
       </div>
     </div>
   );
